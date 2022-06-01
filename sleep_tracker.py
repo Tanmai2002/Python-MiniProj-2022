@@ -14,7 +14,7 @@ logs=pd.DataFrame(index=['Time','Position'])
 def start_tracking():
     global  logs
 
-    cap = cv2.VideoCapture('./test.mp4')
+    cap = cv2.VideoCapture(0)
     temp=None
     z=0
     pose=mp_pose.Pose(min_detection_confidence=0.75,min_tracking_confidence=0.75,model_complexity=0)
@@ -122,8 +122,9 @@ def start_tracking():
     t=logs['Time'][len(logs)-1]-logs['Time'][0]
     print(t)
     
-    toLog = {"Date":datetime.date.today(),"Time of Sleep" :t,'Quality':np.mean(temp.flatten()>0)*3/2*100}
-    pushLog(toLog)
+    toLog = {"Date":str(datetime.date.today()),"Time of Sleep" :t,'Quality':np.mean(temp.flatten()>0)*3/2*100}
+    toLog2 = {"date":str(datetime.date.today()),"timeOfSleep" :t,'quality':np.mean(temp.flatten()>0)*3/2*100}
+    pushLog(toLog2)
 
     df=df.append(toLog,ignore_index=True)
 
