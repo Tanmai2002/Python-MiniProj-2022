@@ -14,7 +14,7 @@ logs=pd.DataFrame(index=['Time','Position'])
 def start_tracking():
     global  logs
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture("./test.mp4")
     temp=None
     z=0
     pose=mp_pose.Pose(min_detection_confidence=0.75,min_tracking_confidence=0.75,model_complexity=0)
