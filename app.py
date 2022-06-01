@@ -82,7 +82,7 @@ topFrame = tk.Frame(app, bg=color["#663399"])
 topFrame.pack(side="top", fill=tk.X)
 
 # Header label text:
-homeLabel = tk.Label(topFrame, text="SlEEP TRACKER", font="Bahnschrift 15", bg=color["#663399"], height=2, padx=20)
+homeLabel = tk.Label(topFrame, text="SLEEP TRACKER", font="Bahnschrift 15", bg=color["#663399"], height=2, padx=20)
 homeLabel.pack(side="right")
 
 
