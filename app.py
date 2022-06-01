@@ -30,7 +30,7 @@ app.geometry('616x411')
 
 
 # dictionary of colors:
-color = {"nero": "#FFFFFF", "#663399": "#663399", "darkorange": "#FE6101"}
+color = {"nero": "#0eed2c", "#663399": "#663399", "darkorange": "#FE6101"}
 
 
 
