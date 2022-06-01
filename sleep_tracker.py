@@ -5,6 +5,9 @@ import numpy as np
 import pandas as pd
 import time
 from connectivity import *
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 mp_pose=mediapipe.solutions.pose
 mp_drawing=mediapipe.solutions.drawing_utils
