@@ -4,6 +4,8 @@ import mediapipe
 import numpy as np
 import pandas as pd
 import time
+from connectivity import *
+
 mp_pose=mediapipe.solutions.pose
 mp_drawing=mediapipe.solutions.drawing_utils
 mp_drawing_styles=mediapipe.solutions.drawing_styles
@@ -119,8 +121,12 @@ def start_tracking():
 
     t=logs['Time'][len(logs)-1]-logs['Time'][0]
     print(t)
+    
+    toLog = {"Date":datetime.date.today(),"Time of Sleep" :t,'Quality':np.mean(temp.flatten()>0)*3/2*100}
+    pushLog(toLog)
 
-    df=df.append({"Date":datetime.date.today(),"Time of Sleep" :t,'Quality':np.mean(temp.flatten()>0)*3/2*100},ignore_index=True)
+    df=df.append(toLog,ignore_index=True)
+
     df.to_csv('Daily_logs.csv',index=False)
     logs.to_csv('logs.csv')
     print(np.mean(temp.flatten()>0))
