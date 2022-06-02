@@ -30,7 +30,7 @@ app.geometry('616x411')
 
 
 # dictionary of colors:
-color = {"nero": "#FFFFFF", "#663399": "#663399", "darkorange": "#FE6101"}
+color = {"nero": "#FFFFFF", "#663399": "#663399", "darkorange": "#FE6101", "primary" : "#dcf7a4"}
 
 
 
@@ -56,8 +56,8 @@ def switch():
 
         # resetting widget colors:
      #    brandLabel.config(bg="gray17", fg="green")
-        homeLabel.config(bg=color["#663399"])
-        topFrame.config(bg=color["#663399"])
+        homeLabel.config(bg=color["primary"])
+        topFrame.config(bg=color["primary"])
         app.config(bg="white")
 
         # turning button OFF:
@@ -78,11 +78,11 @@ def switch():
         btnState = True
 
 # top Navigation bar:
-topFrame = tk.Frame(app, bg=color["#663399"])
+topFrame = tk.Frame(app, bg=color["primary"])
 topFrame.pack(side="top", fill=tk.X)
 
 # Header label text:
-homeLabel = tk.Label(topFrame, text="SLEEP TRACKER", font="Bahnschrift 15", bg=color["#663399"], height=2, padx=20)
+homeLabel = tk.Label(topFrame, text="SLEEP TRACKER", font="Bahnschrift 15", bg=color["primary"], height=2, padx=20)
 homeLabel.pack(side="right")
 
 
@@ -92,13 +92,13 @@ def menuClick():
     removeAllTemporary(app)
     switch()
 # Navbar button:
-navbarBtn = tk.Button(topFrame, image=navIcon, bg=color["#663399"], activebackground=color["#663399"], bd=0, padx=20, command=menuClick)
+navbarBtn = tk.Button(topFrame, image=navIcon, bg=color["primary"], activebackground=color["primary"], bd=0, padx=20, command=menuClick)
 navbarBtn.place(x=10, y=10)
 
 # setting Navbar frame:
-navapp = tk.Frame(app, bg="white", height=1000, width=200)
+navapp = tk.Frame(app, bg="black", height=1000, width=200)
 navapp.place(x=-300, y=0)
-tk.Label(navapp, font="Bahnschrift 15", bg=color["#663399"], fg="white", height=2, width=300, padx=20).place(x=0, y=0)
+tk.Label(navapp, font="Bahnschrift 15", bg=color['primary'], fg="white", height=2, width=300, padx=20).place(x=0, y=0)
 
 # set y-coordinate of Navbar widgets:
 y = 80
@@ -208,10 +208,10 @@ def Track_click():
     removeAllTemporary(app)
 
     # import sleep_tracker
-    trackBtn = tk.Button(app,text="Start Tracking", font="BahnschriftLight 15",fg='black',bg="#663399",bd=0,activebackground="green",activeforeground="white").place(x=20, y=120)
+    trackBtn = tk.Button(app,text="Start Tracking", font="BahnschriftLight 15",fg='black',bg=color['primary'],bd=0,activebackground="green",activeforeground="white").place(x=20, y=120)
     # dashBoardLabel.destroy()
     minutes=0
-    att = tk.Frame(app,bg='white',highlightbackground= "#663399",highlightcolor= "#663399",highlightthickness=2,height=300,width=350).place(x=200,y=80)
+    att = tk.Frame(app,bg='white',highlightbackground= color['primary'] ,highlightcolor= color['primary'],highlightthickness=2,height=300,width=350).place(x=200,y=80)
     playListLabel = tk.Label(att, text = "Sleep Playlist",bg='white',font = 'bold 14 underline').place(x=220,y=100)
     playListLabel = tk.Label(att, text = "Set Alarm",bg='white',font = 'bold 14 underline').place(x=220,y=220)
     def off():
@@ -267,24 +267,24 @@ def Track_click():
     def stop_fun():
         pygame.mixer.music.stop()
         cv2.destroyAllWindows()
-    trackBtn = tk.Button(app, text="Start Tracking", font="BahnschriftLight 15", fg='black', bg="#663399", bd=0, activebackground="green", activeforeground="white",command=sound_track).place(x=20, y=120)
-    StopBtn = tk.Button(app, text="Stop Tracking", font="BahnschriftLight 15", fg='black', bg="#663399", bd=0,activebackground="green", activeforeground="white",command=stop_fun).place(x=20, y=180)
+    trackBtn = tk.Button(app, text="Start Tracking", font="BahnschriftLight 15", fg='black', bg=color['primary'], bd=0, activebackground="green", activeforeground="white",command=sound_track).place(x=20, y=120)
+    StopBtn = tk.Button(app, text="Stop Tracking", font="BahnschriftLight 15", fg='black', bg=color['primary'], bd=0,activebackground="green", activeforeground="white",command=stop_fun).place(x=20, y=180)
 
 
 
     
-DashboardBtn = tk.Button(navapp,text = "Today's Activity", font="BahnschriftLight 15 underline", bg="white", fg=color["#663399"], activeforeground="green", bd=0,command = db_click).place(x=25, y=y)
+DashboardBtn = tk.Button(navapp,text = "Today's Activity", font="BahnschriftLight 15 underline", bg="black", fg="white", activeforeground="green", bd=0,command = db_click).place(x=25, y=y)
 y += 60
-ActivityBtn = tk.Button(navapp,text = "Sleep Analytics", font="BahnschriftLight 15 underline", bg="white", fg=color["#663399"], activeforeground="green", bd=0,command = SA_click).place(x=25, y=y)
+ActivityBtn = tk.Button(navapp,text = "Sleep Analytics", font="BahnschriftLight 15 underline", bg="black", fg="white", activeforeground="green", bd=0,command = SA_click).place(x=25, y=y)
 y += 60
-TrackBtn = tk.Button(navapp,text = "Tracking", font="BahnschriftLight 15 underline", bg="white", fg=color["#663399"], activeforeground="green", bd=0,command = Track_click).place(x=25, y=y)
+TrackBtn = tk.Button(navapp,text = "Tracking", font="BahnschriftLight 15 underline", bg="black", fg="white", activeforeground="green", bd=0,command = Track_click).place(x=25, y=y)
 y += 60
 # ActivityBtn = tk.Button(navapp,text = "Tracking", font="BahnschriftLight 15 underline", bg="white", fg=color["purple"], activeforeground="green", bd=0,command = db_click).place(x=25, y=y)
 # y += 60
 # Track_click()
 
 # Navbar Close Button:
-closeBtn = tk.Button(navapp,image=closeIcon, bg=color["#663399"], activebackground=color["#663399"], bd=0, command=switch)
+closeBtn = tk.Button(navapp,image=closeIcon, bg=color['primary'], activebackground="black", bd=0, command=switch)
 closeBtn.place(x=150, y=10)
 
 # window in mainloop:
