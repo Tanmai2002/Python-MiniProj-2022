@@ -17,11 +17,12 @@ logs=pd.DataFrame(index=['Time','Position'])
 def start_tracking():
     global  logs
 
-    cap = cv2.VideoCapture("./test.mp4")
+    cap = cv2.VideoCapture(0)
     temp=None
     z=0
     pose=mp_pose.Pose(min_detection_confidence=0.75,min_tracking_confidence=0.75,model_complexity=0)
     lm_pos=dict()
+    print(logs)
     while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -111,6 +112,7 @@ def start_tracking():
         if cv2.waitKey(100) & 0xFF == 27:
             cv2.destroyAllWindows()
             break
+
     # print(logs)
     logs.dropna(inplace=True)
 
@@ -121,6 +123,7 @@ def start_tracking():
     else:
         df = pd.DataFrame(index=['Date', 'Time of Sleep', 'Quality'])
     import datetime
+    print(logs)
 
     t=logs['Time'][len(logs)-1]-logs['Time'][0]
     print(t)
